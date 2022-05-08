@@ -1,0 +1,32 @@
+import camion2.*
+import cosas2.*
+
+test "Bumblebee tiene 2 bultos" {
+	assert.equals(2, bumblebee.bultos())
+}
+test "KnightRider tiene 1 bulto" {
+	assert.equals(1, knightRider.bultos())
+}
+test "Paquete de 320 ladrillos tiene 3 bultos" {
+	paqueteLadrillos.guardarLadrillos(320)
+	assert.equals(3, paqueteLadrillos.bultos())
+}
+test "Arena tiene 1 bulto" {
+	assert.equals(1, arena.bultos())
+}
+test "Batería antiaérea tiene 1 bulto" {
+	bateriaAntiarea.sacarMisiles()
+	assert.equals(1, bateriaAntiarea.bultos())
+}
+test "Contenedor, cargado con paquete de 320 ladrillos y KnightRider, tiene 5 bultos" {
+	paqueteLadrillos.guardarLadrillos(320)
+	contenedor.cargar(paqueteLadrillos)
+	contenedor.cargar(knightRider)
+	assert.equals(5, contenedor.bultos())
+}
+test "Residuos radiactivos tiene 1 bulto"{
+	assert.equals(1, residuosRadioactivos.bultos())
+}
+test "Embalaje de seguridad tien 2 bultos"{
+	assert.equals(2, embalajeSeguridad.bultos())
+}

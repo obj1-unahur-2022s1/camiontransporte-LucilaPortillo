@@ -4,9 +4,13 @@ object camion {
 	const objetosCargados = []
 	const pesoEstandoVacio = 1000
 	var pesoObjetosCargados = 0
+	var totalDeBultos = 0
 	
 	
-	method cargar(cosa){ objetosCargados.add(cosa) }
+	method cargar(cosa){ 
+		objetosCargados.add(cosa)
+		cosa.sufrirCambios()
+	}
 	method descargar(cosa){ objetosCargados.remove(cosa) }
 	method todoPesoPar(){ return objetosCargados.all({cosa => cosa.peso().even()})}
 	method hayAlgunoQuePesa(peso){ return objetosCargados.any({cosa => cosa.peso() == peso})}
@@ -22,6 +26,10 @@ object camion {
 	method tieneAlgoQuePesaEntre(min, max){ return objetosCargados.any({cosa => cosa.peso().between(min,max)})}
 	method cosaMasPesada(){ return objetosCargados.max({cosa => cosa.peso()})}
 	method pesos(){ return objetosCargados.map({cosa => cosa.peso()}) }
+	method totalBultos(){ 
+		objetosCargados.forEach({cosa => totalDeBultos = totalDeBultos + cosa.bultos()})
+		return  totalDeBultos
+	}
 	//método adicional
 	method objetosCargadosActualmente() = objetosCargados
 }

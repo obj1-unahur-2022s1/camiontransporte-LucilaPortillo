@@ -1,0 +1,33 @@
+import camion2.*
+import cosas2.*
+
+
+describe "testeando los métodos del camion cargado"{
+	//Cargando camión con bumblebee(robot), arena(150), batería antiaérea(con misiles) y 
+    //embalaje de seguridad(contiene paquete con 80 ladrillos)
+	method initialize(){
+	bumblebee.esAuto()
+	camion.cargar(bumblebee)
+	arena.nuevoPeso(150)
+	camion.cargar(arena)
+	bateriaAntiarea.sacarMisiles()
+	camion.cargar(bateriaAntiarea)
+	paqueteLadrillos.guardarLadrillos(80)
+	embalajeSeguridad.envolverObjeto(paqueteLadrillos)
+	camion.cargar(embalajeSeguridad)
+	}
+	
+	
+	test "El total de bultos es 7"{
+		assert.equals(7, camion.totalBultos())
+	}
+	test "Bumblebee ya no es un robot"{
+		assert.notThat(bumblebee.estado())
+	}
+	test "Arena pesa 170"{
+		assert.equals(170, arena.peso())
+	}
+	test "Paquete de ladrillos pesa 160"{
+		assert.equals(160, paqueteLadrillos.peso())
+	}
+}
