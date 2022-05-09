@@ -45,9 +45,9 @@ describe "testeando los métodos del camion cargado"{
 	test "Batería antiaérea y Bumblebee son más peligrosos que el embalaje de seguridad"{
 		assert.equals([bumblebee,bateriaAntiarea], camion.objetosMasPeligrososQue(embalajeSeguridad))
 	}
-	test "Puede circular en ruta si el máximo nivel de peligro es de 170 pero no si es de 160"{
+	test "Puede circular en ruta si el máximo nivel de peligro es de 170 pero no si es de 90"{
 		assert.that(camion.puedeCircularEnRuta(170))
-		assert.notThat(camion.puedeCircularEnRuta(160))
+		assert.notThat(camion.puedeCircularEnRuta(90))
 	}
 	test "Tiene objeto con un peso entre 200 y 300 pero no uno con un peso entre 3 y 15"{
 		assert.that(camion.tieneAlgoQuePesaEntre(200,300))

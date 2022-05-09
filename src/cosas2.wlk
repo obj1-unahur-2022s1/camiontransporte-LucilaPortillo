@@ -100,13 +100,8 @@ object bateriaAntiarea {
 
 object contenedor {
 	const objetos = []
-	var pesoTotalDeObjetos = 0
-	var bulto = 0
 	
-	method peso(){ 
-		objetos.forEach({objeto => pesoTotalDeObjetos = pesoTotalDeObjetos + objeto.peso()})
-		return 100 + pesoTotalDeObjetos
-	}
+	method peso(){ return 100 + objetos.sum({objeto => objeto.peso()}) }
 	method nivelPeligrosidad(){ 
 		if (objetos.isEmpty()){
 			return 0
@@ -115,9 +110,7 @@ object contenedor {
 			return objetos.max({objeto => objeto.nivelPeligrosidad()}).nivelPeligrosidad()
 		}
 	}
-	method bultos(){ 
-		objetos.forEach({ objeto => bulto = bulto + objeto.bultos()})
-		return bulto + 1
+	method bultos(){ return 1 + objetos.sum({objeto => objeto.bultos()})
 	}
 	method sufrirCambios(){ objetos.forEach({objeto => objeto.sufrirCambios()})}
 	//método adicional

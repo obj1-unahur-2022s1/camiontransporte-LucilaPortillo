@@ -77,12 +77,8 @@ object bateriaAntiarea {
 
 object contenedor {
 	const objetos = []
-	var pesoTotalDeObjetos = 0
 	
-	method peso(){ 
-		objetos.forEach({objeto => pesoTotalDeObjetos = pesoTotalDeObjetos + objeto.peso()})
-		return 100 + pesoTotalDeObjetos
-	}
+	method peso(){ return 100 + objetos.sum({objeto => objeto.peso()}) }
 	method nivelPeligrosidad(){ 
 		if (objetos.isEmpty()){
 			return 0
